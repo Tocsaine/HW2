@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>AskMe</title>
+  <style>
+    {% block style %}
+    {% endblock %}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 header">
+        <h1>AskMe</h1>
+      </div>
+      <div class="col-md-6 name">
+        <input type="text" class = "form-control" placeholder="Поиск">
+      </div>
+      <div class="col-md-1 ask">
+        <button type="submit" class="btn btn-primary">Ask!</button>
+      </div>
+      {% block profile %}
+      {% endblock %}
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        {% block main %}{% endblock %}
+      </div>
+      <div class="col-md-3">
+        <div class="user-info">
+          <h4>Popular Tags</h4>
+          <a href="">perl</a>
+          <a href="" ><span class = "highlight-red">python</span></a>
+          <a href="">TechnoPark</a>
+          <a href=""><span class = "highlight-red">MySQL</span></a>
+          <a href=""><span class = "highlight-green">django</span></a>
+          <a href="">Mail.ru</a>
+          <a href="">Voloshin</a>
+          <a href=""><span class = "highlight-orange">Firefox</span></a>
+          <a href="">Dota 2</a>
+
+          <h4>Best Members</h4>
+          <div class = "underlined">
+            <p><a href="">Mr.Freeman</a></p>
+          </div>
+          <div class = "underlined">
+            <p><a href="">Dr.House</a></p>
+          </div>
+          <div class = "underlined">
+            <p><a href="">Bender</a></p>
+          </div>
+          <div class = "underlined">
+            <p><a href="">Tocsaine</a></p>
+          </div>
+          <div class = "underlined">
+            <p><a href="">uepuxon</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% block pagination %}
+      {% endblock %}
+      <div class="col-md-12 footer">
+        &copy; 2023 Все права защищены
+      </div>
+    </div>
+  </div>
+</body>
+</html>

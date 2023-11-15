@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block style %}
+.header {
+background-color: #f8f9fa;
+padding: 20px;
+border-bottom: 1px solid black;
+}
+.registration {
+background-color: #fff;
+padding: 20px;
+}
+.user-info {
+padding: 20px;
+}
+.footer {
+background-color: #fff;
+padding: 20px;
+text-align: center;
+}
+.pagination{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.page-link{
+padding: 5px 10px;
+text-decoration: none;
+border: 1px solid #ccc;
+margin: 0 2px;
+color: #333;
+background-color: #f9f9f9;
+border-radius: 4px;
+}
+.ellipsis{
+font-weight: bold;
+margin: 0 5px;
+}
+.name {
+padding: 30px 20px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.ask {
+padding: 30px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.avatar {
+padding: 20px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.nickname {
+padding: 25px 20px 0 0;
+background-color: #f8f9fa;
+font-weight: bolder;
+text-align: left;
+}
+.refs {
+background-color: #f8f9fa;
+}
+.base-info{
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+}
+.highlight-red{
+color: red;
+}
+.highlight-orange{
+color: orange;
+}
+.highlight-green{
+color: green;
+}
+.underlined{
+color: blue;
+border-bottom: 1px blue;
+text-decoration: underline;
+}
+.counter {
+display: flex;
+align-items: center;
+font-size: 24px;
+
+}
+.counter-ans1{
+display: flex;
+align-items: center;
+font-size: 24px;
+}
+
+.counter-ans1 button{
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+}
+
+.counter button {
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+}
+
+.negative {
+color: red;
+}
+
+.positive {
+color: green;
+}
+
+.question {
+border-bottom: 1px solid black;
+padding: 10px;
+}
+
+.answer-row{
+border: 2px solid black;
+padding: 10px;
+margin-top: 20px;
+}
+.answer-row button {
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+}
+
+.fixed-input{
+height: 150px !important;
+resize: vertical;
+overflow-y: auto;
+
+}
+.your-answer {
+padding: 10px 10px 10px 0;
+margin-top: 10px;
+border-top: 1px solid black;
+}
+textarea + button {
+margin-top: 10px;
+}
+.hot {
+padding: 10px;
+
+}
+.text-container{
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+.text-container::hover{
+-webkit-line-clamp: unset;
+}
+{% endblock %}
+{% block profile %}
+<div class="col-md-1 avatar">
+    <img src="images/2.jpg" alt="Аватар" width="50">
+</div>
+<div class="col-md-2 base-info">
+    <div class="nickname">
+        Tocsaine
+    </div>
+    <div class="refs">
+        <a href="{% url 'settings' %}">settings</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">log out</a>
+    </div>
+</div>
+{% endblock %}
+{% block main %}
+<div class="row">
+    <div class="col-md-12 registration">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>New Questions</h3>
+            </div>
+            <div class="col-md-8 hot">
+                <a href="{% url 'hot' %}">Hot Questions</a>
+            </div>
+
+        </div>
+
+        {% for item in page %}
+        <div class="row answer-row">
+            <div class="col-md-2">
+                <img src="images/2.jpg" alt="Аватар" width="100">
+                <div class="counter-ans{{ forloop.counter }}">
+                    <span id="count-ans{{ forloop.counter }}">0</span>
+                    <button class="positive" onclick="increment('count-ans{{ forloop.counter }}')">+</button>
+                    <button class="negative" onclick="decrement('count-ans{{ forloop.counter }}')">-</button>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <h4><a href="{% url 'question' question_id=30 %}">{{item.title}}</a></h4>
+                <div class="text-container">
+                    {{ item.text }}
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="{% url 'question' question_id=30 %}">answer (3)</a>
+                    </div>
+                    <div class="col-md-10">
+                        Tags: <a href="{% url 'tag' tag_name='bender' %}">black-jack</a>&nbsp;<a
+                            href="{% url 'tag' tag_name='bender' %}">bender</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <script>
+
+            function updateCount(id, count){
+
+              const countElement = document.getElementById(id);
+              if (count > 0){
+                countElement.textContent = '+' + count;
+              }
+              if (count == 0){
+                countElement.textContent = 0;
+              }
+              if (count < 0){
+                countElement.textContent = count;
+              }
+            }
+
+            function increment(id) {
+              let count = parseInt(document.getElementById(id).textContent);
+              count++;
+              updateCount(id, count);
+            }
+
+            function decrement(id) {
+              let count = parseInt(document.getElementById(id).textContent);
+              count--;
+              updateCount(id, count);
+            }
+
+            updateCount();
+        </script>
+    </div>
+</div>
+{% endblock %}
+{% block pagination %}
+<div class="pagination">
+    {% if page.has_previous %}
+    <a href="?page={{page.previous_page_number}}" class="page-link">&lt;</a>
+    <a href="?page=1" class="page-link">1</a>
+    {% endif %}
+    {% if page.number != page.paginator.num_pages %}
+    <a href="#" class="page-link">{{page.number}}</a>
+    {% endif %}
+    {% if page.number == page.paginator.num_pages and page.has_previous %}
+    <a href="?page={{page.previous_page_number}}" class="page-link">{{page.previous_page_number}}</a>
+    {% endif %}
+    {% if page.has_next and page.next_page_number != page.paginator.num_pages %}
+    <a href="?page={{page.next_page_number}}" class="page-link">{{page.next_page_number}}</a>
+    {% endif %}
+    <span class="ellipsis">...</span>
+    <a href="?page={{page.paginator.num_pages}}" class="page-link">{{page.paginator.num_pages}}</a>
+    {% if page.has_next %}
+    <a href="?page={{page.next_page_number}}" class="page-link">&gt;</a>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+<title>AskMe</title>
+
+</html>

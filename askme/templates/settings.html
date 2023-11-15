@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block style %}
+.header {
+background-color: #f8f9fa;
+padding: 20px;
+border-bottom: 1px solid black;
+}
+.registration {
+background-color: #fff;
+padding: 20px;
+margin: 10px;
+}
+.user-info {
+padding: 20px;
+}
+.footer {
+background-color: #fff;
+padding: 20px;
+text-align: center;
+}
+.name {
+padding: 30px 20px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.ask {
+padding: 30px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.avatar {
+padding: 20px;
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+
+}
+.nickname {
+padding: 25px 20px 0 0;
+background-color: #f8f9fa;
+font-weight: bolder;
+text-align: left;
+}
+.refs {
+
+background-color: #f8f9fa;
+}
+.base-info{
+background-color: #f8f9fa;
+border-bottom: 1px solid black;
+}
+.highlight-red{
+color: red;
+}
+.highlight-orange{
+color: orange;
+}
+.highlight-green{
+color: green;
+}
+.underlined{
+color: blue;
+border-bottom: 1px blue;
+text-decoration: underline;
+}
+.warning{
+color: red;
+}
+.submit {
+margin-top: 20px;
+}
+
+input[type="file"]{
+margin-top: 10px;
+}
+{% endblock %}
+{% block profile %}
+<div class="col-md-1 avatar">
+    <img src="images/2.jpg" alt="Аватар" width="50">
+</div>
+<div class="col-md-2 base-info">
+    <div class="nickname">
+        your_nickname
+    </div>
+    <div class="refs">
+        <a href="">settings</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">log out</a>
+    </div>
+</div>
+{% endblock %}
+{% block main %}
+<div class="row">
+    <div class="col-md-6 registration">
+        <h2>Settings: Tocsaine</h2>
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Login:</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" name="login" value="navi1301">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Email:</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" name="login" value="navi1301@gmail.com">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Nickname:</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" name="login" value="Tocsaine">
+                </div>
+            </div>
+
+            <form action="/upload-avatar" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Upload avatar</p>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="images/2.jpg" width="100">
+                        <input type="file" name="avatar" accept="image/*">
+                    </div>
+                </div>
+            </form>
+            <div class="submit">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+    <title>AskMe</title>
+
+</html>

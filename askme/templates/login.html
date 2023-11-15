@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %}
+
+  {% block profile %}
+  <div class="col-md-1 avatar">
+  </div>
+  <div class="col-md-2 base-info">
+    <div class="refs">
+      <a href="{% url 'signup' %}">register</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="">log in</a>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block main %}
+  <div class="row">
+          <div class="col-md-6 registration">
+            <h2>Log In</h2>
+            <div class="warning">
+              <p>Sorry, wrong password or login!</p>
+            </div>
+            <form>
+              <div class="form-group">
+                <label for="email">Login:</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+          </div>
+        </div>
+  {% endblock %}
+  {% block style %}
+      .header {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-bottom: 1px solid black;
+    }
+    .registration {
+      background-color: #fff;
+      padding: 20px;
+    }
+    .user-info {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .name {
+      padding: 30px 20px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid black;
+
+    }
+    .ask {
+      padding: 30px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid black;
+
+    }
+    .avatar {
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid black;
+
+    }
+    .nickname {
+      padding: 25px 20px 0 0;
+      background-color: #f8f9fa;
+      font-weight: bolder;
+      text-align: left;
+    }
+    .refs {
+      padding-top: 40px;
+      background-color: #f8f9fa;
+    }
+    .base-info{
+      background-color: #f8f9fa;
+      border-bottom: 1px solid black;
+    }
+    .highlight-red{
+      color: red;
+    }
+    .highlight-orange{
+      color: orange;
+    }
+    .highlight-green{
+      color: green;
+    }
+    .underlined{
+      color: blue;
+      border-bottom: 1px blue;
+      text-decoration: underline;
+    }
+    .warning{
+      color: red;
+    }
+  {% endblock %}
+
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+  <title>AskMe</title>
+
+
+</html>
